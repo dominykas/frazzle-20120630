@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>The web framework I want</title>
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="imakewebthings-deck.js-9accb16/core/deck.core.css">
+	<link rel="stylesheet" href="imakewebthings-deck.js-9accb16/extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="imakewebthings-deck.js-9accb16/extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="imakewebthings-deck.js-9accb16/extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="imakewebthings-deck.js-9accb16/extensions/status/deck.status.css">
+	<link rel="stylesheet" href="imakewebthings-deck.js-9accb16/extensions/hash/deck.hash.css">
+
+	<!-- Theme CSS files (menu swaps these out) -->
+	<link rel="stylesheet" href="imakewebthings-deck.js-9accb16/themes/style/swiss.css">
+	<link rel="stylesheet" href="imakewebthings-deck.js-9accb16/themes/transition/horizontal-slide.css">
+
+	<!-- modernizr -->
+	<script src="imakewebthings-deck.js-9accb16/modernizr.custom.js"></script>
+
+	<style>
+		.clearfix:after
+		{
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+
+		.deck-container .codeslidemenu
+		{
+			margin-bottom: 1em;
+			text-align: right;
+			font-size: 50%;
+		}
+
+		.slide footer
+		{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			text-align: center;
+		}
+
+		.slide .notes
+		{
+			display: none;
+		}
+
+		h2.vcenter
+		{
+			border: none;
+			font-size: 4.5em;
+		}
+
+		.deck-container section > p,
+		.deck-container section .vcenter > p
+		{
+			font-size: 2.25em;
+		}
+
+		.deck-container p.author
+		{
+			font-size: 0.75em;
+			text-align: right;
+		}
+
+		.deck-container .slide a
+		{
+			text-decoration: underline;
+		}
+		.deck-container .slide a:hover
+		{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body class="deck-container">
+
+	<section id="title" class="slide">
+		<h1>The web framework I want</h1>
+		<footer>
+			<p>&copy; <a href="http://www.dominykas.com">Dominykas Blyžė</a> (<a href="http://twitter.com/dymonaz">@dymonaz</a>), WTFPL, 2012-06-30</p>
+		</footer>
+	</section>
+
+	<section id="boring-stuff" class="slide">
+		<h2>Boring stuff</h2>
+		<img src="happy-smile.png" alt="Happy smiley face" class="vcenter"/>
+	</section>
+
+	<section id="evolution-1" class="slide">
+		<h2>Evolution of a PHP developer: part 1</h2>
+		<ul>
+			<li><code>index.php</code></li>
+			<li><code>about.php</code></li>
+			<li><code>products.php</code></li>
+			<li><code>include("header.php");</code></li>
+			<li><code>include("footer.php");</code></li>
+		</ul>
+	</section>
+
+	<section id="evolution-2" class="slide">
+		<h2>Evolution of a PHP developer: part 2</h2>
+		<ul>
+			<li><code>index.php?page=about</code></li>
+			<li><code>index.php?page=products</code></li>
+			<li><code>include($page.'.php');</code></li>
+			<li id="evolution-2a" class="slide"><pre>if (in_array($page, $pages)) {
+	include($page.'.php')
+} else {
+	include('404.php');
+}</pre></li>
+		</ul>
+	</section>
+
+	<section id="evolution-3" class="slide">
+		<h2>Evolution of a PHP developer: part 3</h2>
+		<pre>RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L,QSA]</pre>
+	</section>
+
+	<section id="need-a-framework" class="slide">
+		<h2>Evolution: framework?</h2>
+		<ul>
+			<li>Zend Framework?</li>
+			<li>20Mb <strong>zip</strong></li>
+			<li>3Mb <strong>zip</strong> for <em>minimal</em></li>
+			<li>Side note: only 2Mb PDF study guide?</li>
+		</ul>
+	</section>
+
+	<section id="whats-a-framework" class="slide">
+		<h2>What's a framework?</h2>
+		<ul>
+			<li>Not a set of libraries</li>
+			<li>Not a set of dependencies</li>
+			<li>A set of independencies</li>
+			<li>A set of guidelines</li>
+			<li>A set of best practices</li>
+		</ul>
+	</section>
+
+	<section id="making-web-is-easy-1" class="slide">
+		<h2>Making the interwebs is easy</h2>
+		<ol>
+			<li>User makes request</li>
+			<li>Inspect incoming data (URL, cookies, whatnot)</li>
+			<li>Validate incoming data</li>
+			<li>Decide which other data needs to be fetched</li>
+			<li>Transform fetched data into something reasonable (e.g. HTML)</li>
+			<li>Spit the data back out</li>
+		</ol>
+		<p>Trivial.</p>
+	</section>
+
+	<section id="maing-web-is-easy-2" class="slide">
+		<h2>Making web 2.0 is easy</h2>
+		<ol>
+			<li>User interacts with something</li>
+			<li>Fetch some data</li>
+			<li>Transform fetched data into something reasonable (e.g. innerHTML)</li>
+		</ol>
+		<p>Trivial.</p>
+	</section>
+
+	<section id="making-modern-web" class="slide">
+		<h2>Making modern web is hard</h2>
+		<p>Budget?</p>
+		<p>Overengineering?</p>
+		<p>OMG let's build a one page app!</p>
+	</section>
+
+	<section id="must-have" class="slide">
+		<h2>Must have for a business online</h2>
+		<ul>
+			<li>Static HTML served to (at least) bots</li>
+			<li>Dynamic HTML for users</li>
+			<li>Something in the app stores</li>
+		</ul>
+	</section>
+
+	<section id="buzzwords" class="slide">
+		<h2>&lt;buzzwords&gt;</h2>
+		<ul>
+			<li>Responsive design</li>
+			<li>Mobile first</li>
+			<li>node.js</li>
+			<li>Phonegap</li>
+			<li>HTML5</li>
+		</ul>
+		<p>&lt;/buzzwords&gt;</p>
+	</section>
+
+	<section id="putting-together" class="slide">
+		<h2>Putting it all together</h2>
+		<ul>
+			<li>"6th level conditional tier rendering" (<a href="https://twitter.com/dalmaer">@dalmaer</a>)</li>
+			<li>Shared templates</li>
+			<li>Shared logic on what displays at a URL</li>
+			<li>Shared business logic: models, validation, flows</li>
+			<li>Shared APIs for data loading</li>
+			<li>Packaging for web, packaging for Phonegap</li>
+		</ul>
+		<p>Trivial-ish?</p>
+	</section>
+
+	<section id="conditional-rendering" class="slide">
+		<h2>Conditional rendering</h2>
+		<ul>
+			<li>"Static" content (header, footer, nav)</li>
+			<li>"Main" content</li>
+			<li>Sidebar "widgets"</li>
+		</ul>
+	</section>
+
+	<section id="built-for-failure" class="slide">
+		<h2>Built for failure</h2>
+		<ul>
+			<li>Anything that's not "main" is allowed to fail</li>
+			<li>Short timeouts for API calls - "related" info <em>may</em> be deferred</li>
+			<li><strong>Feels</strong> like it works in case of errors</li>
+		</ul>
+	</section>
+
+	<section id="bundling" class="slide">
+		<h2>Asset bundling</h2>
+		<ul>
+			<li>Statics (JS/CSS) need to be compiled and deployed anywhere</li>
+			<li>Some templates may be modified for specific apps</li>
+			<li>Decent versioning for users who "forget" to upgrade</li>
+		</ul>
+	</section>
+
+	<section id="testing" class="slide">
+		<h2>Testability</h2>
+		<ul>
+			<li>buster.js</li>
+			<li>Browser farm</li>
+			<li>Best practices?</li>
+			<li>No boilerplate!</li>
+		</ul>
+	</section>
+
+	<section id="are-we-there-yet" class="slide">
+		<h2>Anyone working on this?</h2>
+		<ul>
+			<li>Mojito?</li>
+			<li>...?</li>
+		</ul>
+	</section>
+
+	<section id="discuss" class="slide">
+		<h2>Discuss!</h2>
+		<ul>
+			<li>I'll be building it</li>
+			<li>I'll either succeed or fail :)</li>
+			<li><a href="https://twitter.com/dymonaz">@dymonaz</a></li>
+		</ul>
+		<footer>
+			<p><a href="http://imakewebthings.com/deck.js/">deck.js</a></p>
+		</footer>
+	</section>
+
+	<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+	<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+	<p class="deck-status">
+		<span class="deck-status-current"></span>
+		/
+		<span class="deck-status-total"></span>
+	</p>
+
+	<form action="." method="get" class="goto-form">
+		<label for="goto-slide">Go to slide:</label>
+		<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+		<datalist id="goto-datalist"></datalist>
+		<input type="submit" value="Go">
+	</form>
+
+	<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+	<script src="imakewebthings-deck.js-9accb16/jquery-1.7.min.js"></script>
+
+	<!-- Deck Core and extensions -->
+	<script src="imakewebthings-deck.js-9accb16/core/deck.core.js"></script>
+	<script src="imakewebthings-deck.js-9accb16/extensions/hash/deck.hash.js"></script>
+	<script src="imakewebthings-deck.js-9accb16/extensions/menu/deck.menu.js"></script>
+	<script src="imakewebthings-deck.js-9accb16/extensions/goto/deck.goto.js"></script>
+	<script src="imakewebthings-deck.js-9accb16/extensions/status/deck.status.js"></script>
+	<script src="imakewebthings-deck.js-9accb16/extensions/navigation/deck.navigation.js"></script>
+	<script>$(function(){
+		$.deck('.slide');
+	})
+	</script>
+</body>
+</html>
